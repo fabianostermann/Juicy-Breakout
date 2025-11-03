@@ -13,4 +13,3 @@ func show():
 
 func hide():
 	environment.background_mode = Environment.BG_CLEAR_COLOR
-

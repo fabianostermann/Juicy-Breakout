@@ -250,4 +250,3 @@ func _on_Screen_Shake_Blocks_value_changed(value):
 func _on_Screen_Shake_Walls_value_changed(value):
 	screen_shake_walls = value
 	emit_signal("changed")
-

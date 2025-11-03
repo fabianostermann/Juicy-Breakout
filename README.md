@@ -1,14 +1,14 @@
 # Juicy Breakout for Godot 4
 
-A Godot 4 project exploring the "Juice it or Lose it" GDC 2012 presentation [1].
+A Godot 4 project exploring the ["Juice it or Lose it"](https://www.youtube.com/watch?v=Fy0aCDmgnxg) GDC 2012 presentation [1].
 
-Originally created by [Jason Francis for Godot 3](https://github.com/BL-MSCH-C220-S22/Juicy-Breakout)
+Originally created by [Jason Francis](https://github.com/BL-MSCH-C220-S22/Juicy-Breakout) for Godot 3
 
-Forked, updated and improved by Fabian Ostermann
+Forked, improved and updated to Godot 4 by [Fabian Ostermann](https://fabianostermann.github.io/)
+
+Tested version: Godot 4.5
 
 ## Implementation
-
-Updated to Godot 4.1
 
 Typeface: [Datalegreya](https://fontlibrary.org/en/font/datalegreya) by Figs Lab
 
