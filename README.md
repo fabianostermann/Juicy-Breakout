@@ -1,25 +1,26 @@
-# Juicy Breakout
+# Juicy Breakout for Godot 4
 
-A Godot 3 project exploring the "Juice it or Lose it" GDC 2012 presentation [1].
+A Godot 4 project exploring the "Juice it or Lose it" GDC 2012 presentation [1].
 
-Originally created by Jason Francis \
-Forked by Fabian Ostermann
+Originally created by [Jason Francis for Godot 3](https://github.com/BL-MSCH-C220-S22/Juicy-Breakout)
+
+Forked, updated and improved by Fabian Ostermann
 
 ## Implementation
 
-Updated to Godot 3.5.1 **⚠ TODO: *UPDATE to Godot 4* ⚠**
+Updated to Godot 4.1
 
 Typeface: [Datalegreya](https://fontlibrary.org/en/font/datalegreya) by Figs Lab
 
 [Smoke particles](https://kenney.nl/assets/smoke-particles) provided by kenney.nl
 
-All other sprites created by Jason Francis in Photoshop
+All other sprites created by [Jason Francis](https://github.com/BL-MSCH-C220-S22) in Photoshop
 
 Music provided by [Patrick de Arteaga](https://patrickdearteaga.com/royalty-free-music/)
 
 ## Future Development
 
-Try out some ideas and implement some missing features from original talk [1]
+Try out some new ideas and implement some missing features from original talk [1]
 
 ## References
 

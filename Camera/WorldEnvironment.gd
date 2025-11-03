@@ -1,6 +1,6 @@
 extends WorldEnvironment
 
-onready var HUD = get_node("/root/Game/HUD")
+@onready var HUD = get_node("/root/Game/HUD")
 
 func _ready():
 	show()

@@ -1,10 +1,10 @@
 extends AudioStreamPlayer
 
-onready var HUD = get_node("/root/Game/HUD")
+@onready var HUD = get_node("/root/Game/HUD")
 
 
 func _ready():
-	HUD.connect("changed",self,"_on_HUD_changed")
+	HUD.connect("changed", Callable(self, "_on_HUD_changed"))
 
 func play_music():
 	if HUD.audio_music and playing:

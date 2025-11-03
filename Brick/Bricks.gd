@@ -1,12 +1,12 @@
 extends Node2D
 
-onready var VP = get_viewport_rect().size
-onready var Brick = load("res://Brick/Brick.tscn")
+@onready var VP = get_viewport_rect().size
+@onready var Brick = load("res://Brick/Brick.tscn")
 
-export var W = 8
-export var H = 7
-export var top_margin = 100
-export var margin = 3
+@export var W = 8
+@export var H = 7
+@export var top_margin = 100
+@export var margin = 3
 
 var B = Vector2(90,30)
 
@@ -21,7 +21,7 @@ func start_bricks():
 	var starty = top_margin + (B.y/2)
 	for w in range(W):
 		for h in range(H):
-			var brick = Brick.instance()
+			var brick = Brick.instantiate()
 			brick.position = Vector2(startx + w*(B.x+margin), starty + h*(B.y+margin))
 			brick.row = h
 			brick.col = w

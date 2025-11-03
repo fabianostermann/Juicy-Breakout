@@ -37,7 +37,6 @@ signal changed
 var WE = null
 
 func _ready():
-	_on_All_On_pressed()
 	if effects_blur:
 		WE = get_node_or_null("/root/Game/WorldEnvironment")
 		if WE != null:
@@ -78,38 +77,38 @@ func set_All_Values(value):
 	set_UI()
 
 func set_UI():
-	$Menu/Color/Color_Paddle.pressed = color_paddle
-	$Menu/Color/Color_Ball.pressed = color_ball
-	$Menu/Color/Color_Blocks.pressed = color_blocks
-	$Menu/Color/Color_Background.pressed = color_background
+	$Menu/Color/Color_Paddle.button_pressed = color_paddle
+	$Menu/Color/Color_Ball.button_pressed = color_ball
+	$Menu/Color/Color_Blocks.button_pressed = color_blocks
+	$Menu/Color/Color_Background.button_pressed = color_background
 
-	$Menu/Particles/Particle_Paddle.pressed = particle_paddle
-	$Menu/Particles/Particle_Blocks.pressed = particle_blocks
-	$Menu/Particles/Particle_Walls.pressed = particle_walls
-	$Menu/Particles/Particle_Ball.pressed = particle_ball
+	$Menu/Particles/Particle_Paddle.button_pressed = particle_paddle
+	$Menu/Particles/Particle_Blocks.button_pressed = particle_blocks
+	$Menu/Particles/Particle_Walls.button_pressed = particle_walls
+	$Menu/Particles/Particle_Ball.button_pressed = particle_ball
 
-	$Menu/Blocks/Blocks_Appear.pressed = blocks_appear
-	$Menu/Blocks/Blocks_Fall.pressed = blocks_fall
-	$Menu/Blocks/Blocks_Fade.pressed = blocks_fade
-	$Menu/Blocks/Blocks_Rotate.pressed = blocks_rotate
-	 
-	$Menu/Ball/Ball_Trail.pressed = ball_trail
-	$Menu/Ball/Impact_Ball.pressed = impact_ball
+	$Menu/Blocks/Blocks_Appear.button_pressed = blocks_appear
+	$Menu/Blocks/Blocks_Fall.button_pressed = blocks_fall
+	$Menu/Blocks/Blocks_Fade.button_pressed = blocks_fade
+	$Menu/Blocks/Blocks_Rotate.button_pressed = blocks_rotate
+	
+	$Menu/Ball/Ball_Trail.button_pressed = ball_trail
+	$Menu/Ball/Impact_Ball.button_pressed = impact_ball
 
-	$Menu/Paddle/Paddle_Appear.pressed = paddle_appear
-	$Menu/Paddle/Paddle_Stretch.pressed = paddle_stretch
+	$Menu/Paddle/Paddle_Appear.button_pressed = paddle_appear
+	$Menu/Paddle/Paddle_Stretch.button_pressed = paddle_stretch
 
 	$Menu/Screen_Shake/Screen_Shake_Paddle.value = screen_shake_paddle
 	$Menu/Screen_Shake/Screen_Shake_Blocks.value = screen_shake_blocks
 	$Menu/Screen_Shake/Screen_Shake_Walls.value = screen_shake_walls
 
-	$Menu/Audio/Audio_music.pressed = audio_music
-	$Menu/Audio/Audio_effects.pressed = audio_effects
+	$Menu/Audio/Audio_music.button_pressed = audio_music
+	$Menu/Audio/Audio_effects.button_pressed = audio_effects
 
-	$Menu/Effects/Effects_blur.pressed = effects_blur
+	$Menu/Effects/Effects_blur.button_pressed = effects_blur
 
-	$Menu/Face/Paddle_Eyes.pressed = paddle_eyes
-	$Menu/Face/Paddle_Mouth.pressed = paddle_mouth
+	$Menu/Face/Paddle_Eyes.button_pressed = paddle_eyes
+	$Menu/Face/Paddle_Mouth.button_pressed = paddle_mouth
 
 
 func _on_All_Off_pressed():

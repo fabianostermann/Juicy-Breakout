@@ -1,14 +1,14 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-onready var HUD = get_node("/root/Game/HUD")
-onready var target_y = position.y
+@onready var HUD = get_node("/root/Game/HUD")
+@onready var target_y = position.y
 
 var row = 0
 var col = 0
 
-export var appear_speed = 3
-export var fall_speed = 1.0
-export var rotate_speed = 1.0
+@export var appear_speed = 3
+@export var fall_speed = 1.0
+@export var rotate_speed = 1.0
 
 var dying = false
 
@@ -21,7 +21,7 @@ var colors = [
 	,Color8(190,75,219)		#Violet 5
 	,Color8(132,94,247)		#Grape 6
 ]
-onready var textures = [
+@onready var textures = [
 	load("res://Assets/smoke0.png")
 	,load("res://Assets/smoke1.png")
 	,load("res://Assets/smoke2.png")
@@ -30,11 +30,11 @@ onready var textures = [
 
 func _ready():
 	randomize()
-	HUD.connect("changed",self,"_on_HUD_changed")
+	HUD.connect("changed", Callable(self, "_on_HUD_changed"))
 	update_color()
 
 func _process(_delta):
-	if dying and not $Particles2D.emitting and not $Tween.is_active():
+	if dying and not $GPUParticles2D.emitting:
 		queue_free()
 
 
@@ -43,8 +43,8 @@ func start_brick():
 		var target_pos = position
 		var appear_duration = randf()*appear_speed + 1.0
 		position.y = -100
-		$Tween.interpolate_property(self, "position", position, target_pos, appear_duration, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
-		$Tween.start()
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "position", target_pos, appear_duration).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_IN_OUT)
 	else:
 		position = Vector2(position.x,target_y)
 
@@ -61,9 +61,9 @@ func update_color():
 
 func emit_particle(pos):
 	if HUD.particle_blocks:
-		$Particles2D.texture = textures[randi() % textures.size()]
-		$Particles2D.emitting = true
-		$Particles2D.global_position = pos
+		$GPUParticles2D.texture = textures[randi() % textures.size()]
+		$GPUParticles2D.emitting = true
+		$GPUParticles2D.global_position = pos
 	
 	
 func _on_HUD_changed():
@@ -71,28 +71,29 @@ func _on_HUD_changed():
 
 
 func die():
-	dying = true
 	var target_color = $Color.color.darkened(0.75)
 	target_color.a = 0
 	var fall_duration = randf()*fall_speed + 1
 	var rotate_amount = (randi() % 1440) - 720
+	
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
 
 	if HUD.blocks_fall:
 		var target_pos = position
 		target_pos.y = 1000
-		$Tween.interpolate_property(self, "position", position, target_pos, fall_duration, Tween.TRANS_CUBIC, Tween.EASE_IN)
-		$Tween.start()
+		tween.tween_property(self, "position", target_pos, fall_duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	if HUD.blocks_fade:
-		$Tween.interpolate_property($Color, "color", $Color.color, target_color, fall_duration-0.25, Tween.TRANS_EXPO, Tween.EASE_IN)
-		$Tween.start()
+		tween.tween_property($Color, "color", target_color, fall_duration-0.25).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
 	if HUD.blocks_rotate:
-		$Tween.interpolate_property(self, "rotation_degrees", rotation_degrees, rotate_amount, fall_duration-0.25, Tween.TRANS_QUINT, Tween.EASE_IN)
-		$Tween.start()
+		tween.tween_property(self, "rotation_degrees", rotate_amount, fall_duration-0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	if not HUD.blocks_fade and not HUD.blocks_fall and not HUD.blocks_rotate:
 		$Color.color = target_color
 	if not HUD.blocks_rotate:
 		rotation = 0
 
+	tween.set_parallel(false)
+	tween.tween_property(self, "dying", true, 0)
 
 	collision_layer = 0
 	collision_mask = 0

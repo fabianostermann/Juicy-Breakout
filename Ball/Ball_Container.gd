@@ -1,8 +1,8 @@
 extends Node2D
 
-onready var Ball = load("res://Ball/Ball.tscn")
-onready var Cdown = get_node("/root/Game/Starting/Countdown")
-onready var timer = get_node("/root/Game/Starting/Timer")
+@onready var Ball = load("res://Ball/Ball.tscn")
+@onready var Cdown = get_node("/root/Game/Starting/Countdown")
+@onready var timer = get_node("/root/Game/Starting/Timer")
 var countdown = 5
 var c = 0
 
@@ -18,7 +18,7 @@ func start_ball():
 	timer.start()
 
 func create_ball():
-	var ball = Ball.instance()
+	var ball = Ball.instantiate()
 	ball.position = Vector2(512, 650)
 	ball.name = "Ball"
 	ball.apply_central_impulse(Vector2(250,-250))

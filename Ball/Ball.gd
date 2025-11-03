@@ -1,23 +1,23 @@
 extends RigidBody2D
 
-export var max_speed = 400.0
-export var min_speed = 100.0
-onready var HUD = get_node("/root/Game/HUD")
-onready var camera = get_node("/root/Game/Camera")
+@export var max_speed = 400.0
+@export var min_speed = 200.0
+@onready var HUD = get_node("/root/Game/HUD")
+@onready var camera = get_node("/root/Game/Camera")
 
-onready var DEFAULT_RECT_SCALE = $Color.rect_scale
-onready var DEFAULT_COLOR = $Color.color
+@onready var DEFAULT_RECT_SCALE = $Color.scale
+@onready var DEFAULT_COLOR = $Color.color
 
-onready var effect_paddle = get_node("/root/Game/Effect_Paddle")
-onready var effect_wall = get_node("/root/Game/Effect_Wall")
-onready var effect_brick = get_node("/root/Game/Effect_Brick")
+@onready var effect_paddle = get_node("/root/Game/Effect_Paddle")
+@onready var effect_wall = get_node("/root/Game/Effect_Wall")
+@onready var effect_brick = get_node("/root/Game/Effect_Brick")
 
 var wall_trauma = 0.01
 var paddle_trauma = 0.01
 var brick_trauma = 0.01
 
 func _ready():
-	HUD.connect("changed",self,"_on_HUD_changed")
+	HUD.connect("changed", Callable(self, "_on_HUD_changed"))
 	contact_monitor = true
 	set_max_contacts_reported(4)
 	update_color()
@@ -29,9 +29,9 @@ func update_color():
 	else:
 		DEFAULT_COLOR = Color(1,1,1,1)
 	if HUD.particle_ball:
-		$Particles2D.emitting = true
+		$GPUParticles2D.emitting = true
 	else:
-		$Particles2D.emitting = false
+		$GPUParticles2D.emitting = false
 
 
 
@@ -46,13 +46,13 @@ func _on_HUD_changed():
 func _physics_process(_delta):
 	if HUD.ball_trail:
 		var c = $Color.duplicate()
-		c.rect_global_position = global_position
+		c.global_position = $Color.global_position
 		c.color = c.color.darkened(0.4)
 		get_node("/root/Game/Trail_Container").add_child(c)
 		
-	$Color.rect_scale = $Color.rect_scale.linear_interpolate(
+	$Color.scale = $Color.scale.lerp(
 		DEFAULT_RECT_SCALE, 0.2)
-	$Color.color = $Color.color.linear_interpolate(
+	$Color.color = $Color.color.lerp(
 		DEFAULT_COLOR, 0.2)
 
 	var bodies = get_colliding_bodies()
@@ -78,7 +78,7 @@ func _physics_process(_delta):
 			body.die()
 
 func set_ball_on_fire():
-	$Color.rect_scale = DEFAULT_RECT_SCALE*2
+	$Color.scale = DEFAULT_RECT_SCALE*2
 	$Color.color = Color(1,1,1,1)
 
 func _integrate_forces(state):
