@@ -2,11 +2,15 @@ extends ColorRect
 
 @onready var HUD = get_node("/root/Game/HUD")
 var c = 0
+
+var tween : Tween = null
+
 var colors = [
-	Color8(0,0,0),			#black
-	Color8(33,37,41),		#gray 9
-	Color8(52,58,64),		#gray 8
-	Color8(33,37,41),		#gray 9
+	Color(0.44, 0.226, 0.062, 1.0),	
+	Color(0.36, 0.104, 0.36, 1.0),	
+	Color(0.152, 0.172, 0.46, 1.0),	
+	Color(0.119, 0.325, 0.34, 1.0),	
+	Color(0.109, 0.32, 0.228, 1.0),	
 ]
 
 
@@ -17,10 +21,12 @@ func _ready():
 
 func update_color():
 	if HUD.color_background:
-		var tween = get_tree().create_tween()
+		tween = get_tree().create_tween()
 		tween.tween_property(self, "color", colors[c], $Timer.wait_time-0.01).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	else:
-		color = Color(0,0,0,1)
+		if tween:
+			tween.stop()
+		color = Color(0.2,0.2,0.2)
 
 func _on_HUD_changed():
 	update_color()

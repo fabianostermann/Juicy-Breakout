@@ -58,9 +58,9 @@ func set_All_Values(value):
 	blocks_fade = value
 	blocks_rotate = value
 
-	screen_shake_paddle = 50*value
-	screen_shake_blocks = 50*value
-	screen_shake_walls = 50*value
+	screen_shake_paddle = 30*value
+	screen_shake_blocks = 30*value
+	screen_shake_walls = 30*value
 	ball_trail = value
 	impact_ball = value
 

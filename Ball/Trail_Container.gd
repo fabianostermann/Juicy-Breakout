@@ -1,9 +1,9 @@
 extends Node2D
 
-@export var shrink_amount = 0.04
-@export var hue_amount = 0.03
-@export var fade_amount = 0.03
-@export var desaturate_amount = 0
+@export var shrink_amount = 0.01
+@export var hue_amount = 0.005
+@export var fade_amount = 0.01
+@export var desaturate_amount = 0.01
 @export var darken_amount = 0.001
 
 func _ready():

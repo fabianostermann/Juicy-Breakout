@@ -197,6 +197,8 @@ shape = SubResource("8")
 script = ExtResource("12")
 
 [node name="Eyes" type="Node2D" parent="Paddle_Container/Paddle/Face"]
+position = Vector2(0, 5)
+scale = Vector2(1.1, 1)
 
 [node name="Eye_left" type="Sprite2D" parent="Paddle_Container/Paddle/Face/Eyes"]
 position = Vector2(-35, -10)
@@ -208,6 +210,7 @@ texture = ExtResource("15")
 
 [node name="Pupil_left" type="Node2D" parent="Paddle_Container/Paddle/Face/Eyes"]
 position = Vector2(-35, -10)
+scale = Vector2(0.8, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Paddle_Container/Paddle/Face/Eyes/Pupil_left"]
 position = Vector2(10, 0)
@@ -215,6 +218,7 @@ texture = ExtResource("14")
 
 [node name="Pupil_right" type="Node2D" parent="Paddle_Container/Paddle/Face/Eyes"]
 position = Vector2(35, -10)
+scale = Vector2(0.8, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Paddle_Container/Paddle/Face/Eyes/Pupil_right"]
 position = Vector2(10, 0)

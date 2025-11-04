@@ -3,7 +3,7 @@ extends Node2D
 @onready var Ball = load("res://Ball/Ball.tscn")
 @onready var Cdown = get_node("/root/Game/Starting/Countdown")
 @onready var timer = get_node("/root/Game/Starting/Timer")
-var countdown = 5
+var countdown = 3
 var c = 0
 
 func _ready():
