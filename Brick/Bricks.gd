@@ -27,3 +27,8 @@ func start_bricks():
 			brick.col = w
 			add_child(brick)
 			brick.start_brick()
+
+func _process(_delta):
+	if get_children().is_empty():
+		var tween = get_tree().create_tween()
+		tween.tween_callback(start_bricks).set_delay(3)
